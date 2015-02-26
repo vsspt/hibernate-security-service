@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.github.vsspt.security.schema.Role" table="roles">
+        <id name="roleName" type="string">
+            <column name="role_name" length="100" />
+            <generator class="assigned" />
+        </id>
+        <property name="description" type="string">
+            <column name="description" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="19" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="19" />
+        </property>
+        <set name="user" table="users_roles" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="role_name" length="100" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.github.vsspt.security.schema.User">
+                <column name="username" length="50" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="permission" table="permissions_roles" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="role_name" length="100" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.github.vsspt.security.schema.Permission">
+                <column name="permission" length="50" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="module" table="modules_roles" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="role_name" length="100" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.github.vsspt.security.schema.Module">
+                <column name="module_id" length="50" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

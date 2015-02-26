@@ -1,0 +1,54 @@
+create database security_database;
+use security_database;
+
+CREATE USER 'security'@'%' IDENTIFIED BY 'security';
+GRANT ALL PRIVILEGES ON *.* TO 'security'@'%' WITH GRANT OPTION;
+
+CREATE TABLE users (
+  username  varchar(50) NOT NULL, 
+  password  varchar(100) NOT NULL, 
+  firstName varchar(50), 
+  lastName  varchar(50), 
+  created   timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL, 
+  updated   timestamp NULL, 
+  PRIMARY KEY (username));
+  
+CREATE TABLE roles (
+  role_name   varchar(100) NOT NULL, 
+  description varchar(255) NOT NULL, 
+  created     timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL, 
+  updated     timestamp NULL, 
+  PRIMARY KEY (role_name));
+  
+CREATE TABLE users_roles (
+  username  varchar(50) NOT NULL, 
+  role_name varchar(100) NOT NULL, 
+  PRIMARY KEY (username, 
+  role_name));
+  
+CREATE TABLE permissions (
+  permission varchar(50) NOT NULL, 
+  PRIMARY KEY (permission));
+  
+CREATE TABLE permissions_roles (
+  permission varchar(50) NOT NULL, 
+  role_name  varchar(100) NOT NULL, 
+  PRIMARY KEY (permission, 
+  role_name));
+  
+CREATE TABLE modules (
+  id varchar(50) NOT NULL, 
+  PRIMARY KEY (id));
+  
+CREATE TABLE modules_roles (
+  module_id varchar(50) NOT NULL, 
+  role_name varchar(100) NOT NULL, 
+  PRIMARY KEY (module_id, 
+  role_name));
+  
+ALTER TABLE users_roles ADD INDEX FKusers_role195908 (username), ADD CONSTRAINT FKusers_role195908 FOREIGN KEY (username) REFERENCES users (username);
+ALTER TABLE users_roles ADD INDEX FKusers_role33757 (role_name), ADD CONSTRAINT FKusers_role33757 FOREIGN KEY (role_name) REFERENCES roles (role_name);
+ALTER TABLE permissions_roles ADD INDEX FKpermission694279 (permission), ADD CONSTRAINT FKpermission694279 FOREIGN KEY (permission) REFERENCES permissions (permission);
+ALTER TABLE permissions_roles ADD INDEX FKpermission607284 (role_name), ADD CONSTRAINT FKpermission607284 FOREIGN KEY (role_name) REFERENCES roles (role_name);
+ALTER TABLE modules_roles ADD INDEX FKmodules_ro470557 (module_id), ADD CONSTRAINT FKmodules_ro470557 FOREIGN KEY (module_id) REFERENCES modules (id);
+ALTER TABLE modules_roles ADD INDEX FKmodules_ro446551 (role_name), ADD CONSTRAINT FKmodules_ro446551 FOREIGN KEY (role_name) REFERENCES roles (role_name);

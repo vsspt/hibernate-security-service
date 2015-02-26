@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:annox="http://annox.dev.java.net"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd"
+    jaxb:extensionBindingPrefixes="xjc annox"
+    version="2.1">
+
+    <jaxb:bindings schemaLocation="schema.xsd" node="/xsd:schema">
+
+        <!-- Annotate Class User -->        
+        <jaxb:bindings node="xsd:element[@name='User']/xsd:complexType/xsd:sequence/xsd:element[@name='username']">
+            <annox:annotate target="field">@com.github.vsspt.xjc.annotation.IncludeOnEqualsAndHash</annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xsd:element[@name='User']/xsd:complexType/xsd:sequence/xsd:element[@name='password']">
+            <annox:annotate target="field">@com.github.vsspt.xjc.annotation.ExcludeOnToString</annox:annotate>
+        </jaxb:bindings>
+		
+        <!-- Annotate Class Role -->        
+        <jaxb:bindings node="xsd:element[@name='Role']/xsd:complexType/xsd:sequence/xsd:element[@name='roleName']">
+            <annox:annotate target="field">@com.github.vsspt.xjc.annotation.IncludeOnEqualsAndHash</annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xsd:element[@name='Role']/xsd:complexType/xsd:sequence/xsd:element[@ref='tns:User']">
+            <annox:annotate target="field">@com.github.vsspt.xjc.annotation.ExcludeOnToString</annox:annotate>
+        </jaxb:bindings>
+		
+        <jaxb:bindings node="xsd:element[@name='Role']/xsd:complexType/xsd:sequence/xsd:element[@ref='tns:Permission']">
+            <annox:annotate target="field">@com.github.vsspt.xjc.annotation.ExcludeOnToString</annox:annotate>
+        </jaxb:bindings>	
+
+        <jaxb:bindings node="xsd:element[@name='Role']/xsd:complexType/xsd:sequence/xsd:element[@ref='tns:Module']">
+            <annox:annotate target="field">@com.github.vsspt.xjc.annotation.ExcludeOnToString</annox:annotate>
+        </jaxb:bindings>		
+		
+		
+        <!-- Annotate Class Permission -->        
+        <jaxb:bindings node="xsd:element[@name='Permission']/xsd:complexType/xsd:sequence/xsd:element[@name='permission']">
+            <annox:annotate target="field">@com.github.vsspt.xjc.annotation.IncludeOnEqualsAndHash</annox:annotate>
+        </jaxb:bindings>	
+		
+        <jaxb:bindings node="xsd:element[@name='Permission']/xsd:complexType/xsd:sequence/xsd:element[@ref='tns:Role']">
+            <annox:annotate target="field">@com.github.vsspt.xjc.annotation.ExcludeOnToString</annox:annotate>
+        </jaxb:bindings>			
+		
+        <!-- Annotate Class Module -->        
+        <jaxb:bindings node="xsd:element[@name='Module']/xsd:complexType/xsd:sequence/xsd:element[@name='id']">
+            <annox:annotate target="field">@com.github.vsspt.xjc.annotation.IncludeOnEqualsAndHash</annox:annotate>
+        </jaxb:bindings>
+		
+        <jaxb:bindings node="xsd:element[@name='Module']/xsd:complexType/xsd:sequence/xsd:element[@ref='tns:Role']">
+            <annox:annotate target="field">@com.github.vsspt.xjc.annotation.ExcludeOnToString</annox:annotate>
+        </jaxb:bindings>			
+
+    </jaxb:bindings>
+
+</jaxb:bindings>

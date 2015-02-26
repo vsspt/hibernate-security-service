@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="app-security" verbose="5">
+
+	<!-- Global -->
+	<parameter name="user" value="vsaavedra"/>	
+
+	<test name="DomainObjectFactoryTests">
+	<classes>
+	
+		<class name="com.github.vsspt.security.tests.SecurityTest">
+		  <methods>
+			<include name="testUser" />
+		  </methods>
+		</class>
+	  </classes>
+	</test>
+
+
+</suite>
