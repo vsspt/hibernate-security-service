@@ -3,7 +3,7 @@
    <parent>
 	<groupId>com.github.vsspt</groupId>  
 	<artifactId>security-service</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>security-service-hibernate-impl</artifactId>
@@ -96,7 +96,7 @@
   </dependencies>
 
   <scm>
-    <tag>security-service-1.0.0</tag>
+    <tag>security-service-hibernate-1.0.0</tag>
   </scm>
 </project>
 
