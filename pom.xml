@@ -3,8 +3,9 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.github.vsspt</groupId>
    <artifactId>security-service</artifactId>
-   <version>1.0.1-SNAPSHOT</version>
+   <version>1.0.0-SNAPSHOT</version>
    <name>Hibernate Security Service</name>
+   <description>A implementation using Hibernate of a security table structure</description>
    <packaging>pom</packaging>
    <url>https://github.com/vsspt/Security-Service</url>
    <properties>
