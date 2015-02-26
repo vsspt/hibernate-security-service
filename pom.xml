@@ -3,7 +3,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.github.vsspt</groupId>
    <artifactId>security-service</artifactId>
-   <version>1.0.0</version>
+   <version>1.0.1-SNAPSHOT</version>
    <name>Hibernate Security Service</name>
    <packaging>pom</packaging>
    <url>https://github.com/vsspt/Security-Service</url>
@@ -56,7 +56,7 @@
       <connection>scm:git:https://github.com/vsspt/hibernate-security-service.git</connection>
       <url>scm:git:https://github.com/vsspt/hibernate-security-service.git</url>
       <developerConnection>scm:git:https://github.com/vsspt/hibernate-security-service.git</developerConnection>
-     <tag>hibernate-security-service</tag>
+     <tag>security-service-1.0.0</tag>
   </scm>
    <developers>
       <developer>
