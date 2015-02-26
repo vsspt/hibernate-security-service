@@ -1,5 +1,4 @@
 # hibernate-security-service
-Hibernate Security Service
 ===========
 A simple service that implements a security service based on Spring security data-model recommendations.
 
