@@ -96,7 +96,7 @@
   </dependencies>
 
   <scm>
-    <tag>security-service-1.0.0</tag>
+    <tag>hibernate-security-service</tag>
   </scm>
 </project>
 
